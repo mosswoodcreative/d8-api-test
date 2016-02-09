@@ -1,0 +1,37 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      zombie: ~
+      base_url: http://local.drupal8-api.dev
+      default_session: 'zombie'
+      javascript_session: zombie
+      zombie:
+        node_modules_path: /home/gerald/Repo/d8-api-test/tests/node_modules/
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drush:
+        alias: 'npm.local'
+      drupal:
+        drupal_root: '/home/gerald/Repo/d8-api-test/app'
+      #subcontexts:
+       # paths:
+        #  - '/home/gerald/Repo/d8-api-test/app/modules'
+      #selectors:
+        # error_message_selector: .messages.error
+        # success_message_selector: .messages.status
+      #text:
+        #username_field: Email
+      #basic_auth:
+       # username: admin
+       # password: password
